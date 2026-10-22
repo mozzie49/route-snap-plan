@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "status": "candidate_plan",
+  "notice": "Candidates only, not coverage proof. Check auth, data, routing, constraints, rendering and final screenshot links.",
+  "changed_files": [
+    "app/views/events/index.html.erb",
+    "app/views/events/show.html.erb",
+    "app/views/shared/_header.html.erb"
+  ],
+  "candidates": [
+    {
+      "path": "/",
+      "url": "http://127.0.0.1:3000/",
+      "screenshot": "shot-8a5edab28263.png",
+      "reasons": [
+        {
+          "source": "app/views/shared/_header.html.erb",
+          "basis": "explicit configured mapping"
+        }
+      ]
+    },
+    {
+      "path": "/events",
+      "url": "http://127.0.0.1:3000/events",
+      "screenshot": "shot-417baafa3f25.png",
+      "reasons": [
+        {
+          "source": "app/views/events/index.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "events#index",
+          "route_name": "events"
+        },
+        {
+          "source": "app/views/shared/_header.html.erb",
+          "basis": "explicit configured mapping"
+        }
+      ]
+    },
+    {
+      "path": "/events/sample-conference-2026",
+      "url": "http://127.0.0.1:3000/events/sample-conference-2026",
+      "screenshot": "shot-1a8b18175701.png",
+      "reasons": [
+        {
+          "source": "app/views/events/show.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "events#show",
+          "route_name": "event"
+        }
+      ]
+    }
+  ],
+  "unresolved": [],
+  "review_notes": [],
+  "ignored": []
+}
