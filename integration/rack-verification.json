@@ -1,0 +1,74 @@
+{
+  "ruby": "3.3.8",
+  "rails": "8.1.0",
+  "method": "in-process Rack::MockRequest; no browser or network server",
+  "screenshots_captured": false,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "actual_target": "events#index",
+      "candidate_targets": [
+        "events#index"
+      ],
+      "dispatch_matches_candidate": true,
+      "mismatch_in_review_notes": false,
+      "fixture_html_rendered": true
+    },
+    {
+      "path": "/admin/events",
+      "status": 200,
+      "actual_target": "admin/events#index",
+      "candidate_targets": [
+        "admin/events#index"
+      ],
+      "dispatch_matches_candidate": true,
+      "mismatch_in_review_notes": false,
+      "fixture_html_rendered": true
+    },
+    {
+      "path": "/en/talks/fixture-talk",
+      "status": 200,
+      "actual_target": "talks#show",
+      "candidate_targets": [
+        "talks#show"
+      ],
+      "dispatch_matches_candidate": true,
+      "mismatch_in_review_notes": false,
+      "fixture_html_rendered": true
+    },
+    {
+      "path": "/events",
+      "status": 200,
+      "actual_target": "events#index",
+      "candidate_targets": [
+        "events#index"
+      ],
+      "dispatch_matches_candidate": true,
+      "mismatch_in_review_notes": false,
+      "fixture_html_rendered": true
+    },
+    {
+      "path": "/events/fixture-conference",
+      "status": 200,
+      "actual_target": "events#show",
+      "candidate_targets": [
+        "events#show"
+      ],
+      "dispatch_matches_candidate": true,
+      "mismatch_in_review_notes": false,
+      "fixture_html_rendered": true
+    },
+    {
+      "path": "/venues/new",
+      "status": 200,
+      "actual_target": "venues#show",
+      "candidate_targets": [
+        "venues#new"
+      ],
+      "dispatch_matches_candidate": false,
+      "mismatch_in_review_notes": true,
+      "fixture_html_rendered": true
+    }
+  ]
+}

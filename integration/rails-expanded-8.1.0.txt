@@ -1,0 +1,69 @@
+[ Routes for application ]
+--[ Route 1 ]-------------------------------------------------------------------
+Prefix            | root
+Verb              | GET
+URI               | /
+Controller#Action | events#index
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:2
+--[ Route 2 ]-------------------------------------------------------------------
+Prefix            | events
+Verb              | GET
+URI               | /events(.:format)
+Controller#Action | events#index
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:3
+--[ Route 3 ]-------------------------------------------------------------------
+Prefix            | 
+Verb              | POST
+URI               | /events(.:format)
+Controller#Action | events#create
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:3
+--[ Route 4 ]-------------------------------------------------------------------
+Prefix            | new_event
+Verb              | GET
+URI               | /events/new(.:format)
+Controller#Action | events#new
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:3
+--[ Route 5 ]-------------------------------------------------------------------
+Prefix            | event
+Verb              | GET
+URI               | /events/:slug(.:format)
+Controller#Action | events#show
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:3
+--[ Route 6 ]-------------------------------------------------------------------
+Prefix            | admin_events
+Verb              | GET
+URI               | /admin/events(.:format)
+Controller#Action | admin/events#index
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:5
+--[ Route 7 ]-------------------------------------------------------------------
+Prefix            | talk
+Verb              | GET
+URI               | (/:locale)/talks/:slug(.:format)
+Controller#Action | talks#show
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:8
+--[ Route 8 ]-------------------------------------------------------------------
+Prefix            | venue
+Verb              | GET
+URI               | /venues/:slug(.:format)
+Controller#Action | venues#show
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:10
+--[ Route 9 ]-------------------------------------------------------------------
+Prefix            | new_venue
+Verb              | GET
+URI               | /venues/new(.:format)
+Controller#Action | venues#new
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:11
+--[ Route 10 ]------------------------------------------------------------------
+Prefix            | embedded
+Verb              | 
+URI               | /embedded
+Controller#Action | Embedded::Engine
+Source Location   | <FIXTURE_ROOT>/config/routes.rb:12
+
+[ Routes for Embedded::Engine ]
+--[ Route 1 ]-------------------------------------------------------------------
+Prefix            | entries
+Verb              | GET
+URI               | /entries(.:format)
+Controller#Action | embedded/entries#index
+Source Location   | <FIXTURE_ROOT>/embedded/config/routes.rb:2

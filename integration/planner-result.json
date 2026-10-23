@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "status": "needs_mapping",
+  "notice": "Candidates only, not coverage proof. Check auth, data, routing, constraints, rendering and final screenshot links.",
+  "changed_files": [
+    "app/views/admin/events/index.html.erb",
+    "app/views/embedded/entries/index.html.erb",
+    "app/views/events/index.html.erb",
+    "app/views/events/show.html.erb",
+    "app/views/shared/_header.html.erb",
+    "app/views/talks/show.html.erb",
+    "app/views/venues/new.html.erb"
+  ],
+  "candidates": [
+    {
+      "path": "/",
+      "url": "http://127.0.0.1:3000/",
+      "screenshot": "shot-8a5edab28263.png",
+      "reasons": [
+        {
+          "source": "app/views/events/index.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "events#index",
+          "route_name": "root"
+        }
+      ]
+    },
+    {
+      "path": "/admin/events",
+      "url": "http://127.0.0.1:3000/admin/events",
+      "screenshot": "shot-23299daa1bd8.png",
+      "reasons": [
+        {
+          "source": "app/views/admin/events/index.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "admin/events#index",
+          "route_name": "admin_events"
+        }
+      ]
+    },
+    {
+      "path": "/en/talks/fixture-talk",
+      "url": "http://127.0.0.1:3000/en/talks/fixture-talk",
+      "screenshot": "shot-c56704cef445.png",
+      "reasons": [
+        {
+          "source": "app/views/talks/show.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "talks#show",
+          "route_name": "talk"
+        }
+      ]
+    },
+    {
+      "path": "/events",
+      "url": "http://127.0.0.1:3000/events",
+      "screenshot": "shot-417baafa3f25.png",
+      "reasons": [
+        {
+          "source": "app/views/events/index.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "events#index",
+          "route_name": "events"
+        }
+      ]
+    },
+    {
+      "path": "/events/fixture-conference",
+      "url": "http://127.0.0.1:3000/events/fixture-conference",
+      "screenshot": "shot-6637c756691d.png",
+      "reasons": [
+        {
+          "source": "app/views/events/show.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "events#show",
+          "route_name": "event"
+        }
+      ]
+    },
+    {
+      "path": "/venues/new",
+      "url": "http://127.0.0.1:3000/venues/new",
+      "screenshot": "shot-7f1e66fff189.png",
+      "reasons": [
+        {
+          "source": "app/views/venues/new.html.erb",
+          "basis": "HTML view convention + supplied route table (candidate, not proven rendering)",
+          "route": "venues#new",
+          "route_name": "new_venue"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    {
+      "source": "app/views/embedded/entries/index.html.erb",
+      "reason": "Mounted-engine route: internal URI omits mount prefix; add explicit glob-to-path mapping",
+      "route": "embedded/entries#index",
+      "uri": "/entries(.:format)"
+    },
+    {
+      "source": "app/views/shared/_header.html.erb",
+      "reason": "Shared partial/layout: add explicit glob-to-path mapping; consumers are not inferred"
+    }
+  ],
+  "review_notes": [
+    {
+      "path": "/venues/new",
+      "expected_targets": [
+        "venues#new"
+      ],
+      "earlier_target": "venues#show",
+      "earlier_uri": "/venues/:slug(.:format)",
+      "reason": "Possible earlier-route shadowing; export omits request constraints. Verify dispatch or use an explicit reviewed mapping."
+    }
+  ],
+  "ignored": []
+}
