@@ -1,0 +1,25 @@
+--[ Route 1 ]--------------------------------------
+Prefix            | root
+Verb              | GET
+URI               | /
+Controller#Action | home#index
+--[ Route 2 ]--------------------------------------
+Prefix            | events
+Verb              | GET
+URI               | /events(.:format)
+Controller#Action | events#index
+--[ Route 3 ]--------------------------------------
+Prefix            | event
+Verb              | GET
+URI               | /events/:slug(.:format)
+Controller#Action | events#show
+--[ Route 4 ]--------------------------------------
+Prefix            |
+Verb              | POST
+URI               | /events(.:format)
+Controller#Action | events#create
+--[ Route 5 ]--------------------------------------
+Prefix            | admin_events
+Verb              | GET
+URI               | /admin/events(.:format)
+Controller#Action | admin/events#index

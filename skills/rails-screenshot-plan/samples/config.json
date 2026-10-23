@@ -1,0 +1,9 @@
+{
+  "samples": {
+    "event": {"params": {"slug": "sample-conference-2026"}}
+  },
+  "rules": [
+    {"glob": "app/views/shared/_header.html.erb", "paths": ["/", "/events"]}
+  ],
+  "ignore": ["test/*", "docs/*"]
+}
