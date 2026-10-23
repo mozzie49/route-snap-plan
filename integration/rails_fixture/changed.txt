@@ -1,0 +1,7 @@
+app/views/events/index.html.erb
+app/views/events/show.html.erb
+app/views/admin/events/index.html.erb
+app/views/talks/show.html.erb
+app/views/venues/new.html.erb
+app/views/shared/_header.html.erb
+app/views/embedded/entries/index.html.erb
