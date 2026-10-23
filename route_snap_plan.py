@@ -219,11 +219,17 @@ def plan(routes, changed, config=None, base="http://127.0.0.1:3000"):
         expected = {reason["route"] for reason in candidate["reasons"] if "route" in reason}
         if not expected:
             continue
+        if len(expected) > 1:
+            review_notes.append({"path": candidate["path"], "expected_targets": sorted(expected),
+                "reason": "Merged candidate has multiple expected action targets; one URL may not exercise every change. Verify dispatch for each source or choose distinct reviewed samples."})
         for route in routes:
             if route.get("engine"):
                 continue
             pattern = route_pattern(route["uri"])
-            if "GET" not in route["verb"].split("|") or not pattern or not pattern.fullmatch(candidate["path"].split("?", 1)[0]):
+            # Rails exports via: :all with a blank verb. Never infer a capture
+            # candidate from it, but it can intercept a later explicit GET.
+            may_match_get = not route["verb"] or "GET" in route["verb"].split("|")
+            if not may_match_get or not pattern or not pattern.fullmatch(candidate["path"].split("?", 1)[0]):
                 continue
             if route["target"] not in expected:
                 review_notes.append({"path": candidate["path"], "expected_targets": sorted(expected),
@@ -243,7 +249,7 @@ def main(argv=None):
     parser.add_argument("--null", action="store_true", help="Changed paths are NUL-delimited")
     parser.add_argument("--config", type=Path, help="Optional JSON samples, rules and ignores")
     parser.add_argument("--base-url", default="http://127.0.0.1:3000")
-    parser.add_argument("--strict", action="store_true", help="Exit 1 when any changed file/route is unresolved")
+    parser.add_argument("--strict", action="store_true", help="Exit 1 when unresolved mappings or routing review notes remain")
     args = parser.parse_args(argv)
     try:
         changed = args.changed.read_text().split("\0" if args.null else "\n")

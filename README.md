@@ -112,7 +112,7 @@ The JSON contains `candidates`, `unresolved`, `review_notes`, `ignored`, and the
 - `1`: unresolved mappings or routing review notes remain under `--strict`.
 - `2`: malformed input, unsupported config shape, or read failure.
 
-Possible earlier-route shadowing is emitted as a structured `review_notes` item; it is a caution, not a claim that omitted route constraints definitely allow the earlier match. Other runtime constraints remain unverified.
+Possible earlier-route shadowing (including earlier blank/all-method routes) and URLs deduplicated from multiple expected action targets are emitted as structured `review_notes` items. These are cautions, not claims that omitted route constraints definitely allow an earlier match. Other runtime constraints remain unverified.
 
 No remote URLs are accepted as sample paths. The optional `--base-url` must be an HTTP(S) origin without credentials. The planner never fetches it.
 
@@ -129,7 +129,7 @@ python3 -m unittest discover -s tests -v
 python3 -m py_compile route_snap_plan.py
 ```
 
-Coverage includes unresolved IDs, namespaces, partials/layouts, POST exclusion, explicit mapping, malformed routes/config, path validation, deterministic output, and strict/NUL-delimited CLI behavior. The 39 offline tests include an path-redacted export captured from a real, self-authored Rails 8.1.0 fixture.
+Coverage includes unresolved IDs, namespaces, partials/layouts, POST exclusion, explicit mapping, malformed routes/config, path validation, routing ambiguity, deterministic output, and strict/NUL-delimited CLI behavior. The 41 offline tests include a path-redacted export captured from a real, self-authored Rails 8.1.0 fixture.
 
 The opt-in [live Rails smoke](integration/README.md) has also passed on Ruby 3.3.8 / Rails 8.1.0: 11 exported routes, 6 candidate URLs, 2 explicit unresolved mappings, and 1 routing warning. All 6 URLs returned fixture HTML with status 200 through Rack. One deliberately shadowed URL dispatched to a different action, exactly as the planner warned. This is framework integration validation, **not** a RubyEvents deployment test or a browser screenshot test.
 
